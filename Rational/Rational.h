@@ -20,34 +20,32 @@ public:
 	string operator()() const;
 	explicit operator double();
 
-	void reduce();
 	long getNumerator() const;
 	long getDenominator() const;
 	void setNumerator(long num);
 	void setDenominator(long denom);
+
+	void reduce();
 
 private:
 	long numerator;
 	long denominator;
 
 	long greatestCommonDivisor(long x, long y) const;
-	long leastCommonMultiple(long x, long y) const;
 };
 
+long leastCommonMultiple(long x, long y);
 
 //all should take parameters by const reference
 
 ostream& operator<<(ostream &out, const Rational &rational);
 //istream& operator>>(istream &in, const Rational &rational);
 
-//+, -, *, / take rValue and lValue and return the result
-//+
-//-
+Rational operator+(const Rational &lValue, const Rational &rValue);
+Rational operator-(const Rational &lValue, const Rational &rValue);
 Rational operator*(const Rational &lValue, const Rational &rValue);
-//Rational& operator*(const Rational &lValue, const long &rValue);
-//Rational& operator*(const long &lValue, const Rational &rValue);
 Rational operator/(const Rational &lValue, const Rational &rValue);
-//\
+
 
 //These should take an lValue, rValue, 
 //+=

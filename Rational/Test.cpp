@@ -31,4 +31,19 @@ void main()
 
 	//Put tests for the global functions here!
 
+	cout << "1/3, " << test1 * test2 << endl; //tests Rational * Rational
+	cout << "4/1, " << test1 * 6 << endl; //tests Rational * long
+	cout << "4/1, " << 6 * test1 << endl; //tests long * Rational
+
+	cout << "4/3, " << test1 / test2 << endl; //tests Rational / Rational
+	cout << "2/9, " << test1 / 3 << endl; //tests Rational / long
+	cout << "9/2, " << 3 / test1 << endl; //tests long / Rational
+
+	cout << "7/6, " << test1 + test2 << endl; //tests Rational + Rational
+	cout << "17/3, " << test1 + 5 << endl; //tests Rational + long
+	cout << "11/2, " << 5 + test2 << endl; //tests long + Rational
+
+	cout << "1/6, " << test1 - test2 << endl; //tests Rational - Rational
+	cout << "-7/3, " << test1 - 3 << endl; //tests Rational - long
+	cout << "7/3, " << 3 - test1 << endl; //tests long - Rational
 }

@@ -38,6 +38,11 @@ void Rational::reduce()
 		numerator *= -1;
 		denominator *= -1;
 	}
+	else if (denominator < 0)
+	{
+		numerator *= -1;
+		denominator *= -1;
+	}
 }
 
 long Rational::greatestCommonDivisor(long x, long y) const
@@ -52,9 +57,11 @@ long Rational::greatestCommonDivisor(long x, long y) const
 	return y;
 }
 
-long Rational::leastCommonMultiple(long x, long y) const
+
+//METHODS
+
+long leastCommonMultiple(long x, long y)
 {
-	bool Continue = true;
 	long result = x;
 	while (result % y != 0)
 	{
@@ -62,8 +69,6 @@ long Rational::leastCommonMultiple(long x, long y) const
 	}
 	return result;
 }
-
-//METHODS
 
 const Rational& Rational::operator=(const Rational & rValue)
 {
@@ -143,6 +148,26 @@ ostream& operator<<(ostream &out, const Rational &rational)
 //	out << rational.getNumerator() << "\\" << rational.getDenominator();
 //	return out;
 //}
+
+Rational operator+(const Rational &lValue, const Rational &rValue)
+{
+	Rational result;
+	result.setDenominator(lValue.getDenominator() * rValue.getDenominator());
+	result.setNumerator((lValue.getNumerator() * rValue.getDenominator()) 
+		+ (rValue.getNumerator() * lValue.getDenominator()));
+	result.reduce();
+	return result;
+}
+
+Rational operator-(const Rational &lValue, const Rational &rValue)
+{
+	Rational result;
+	result.setDenominator(lValue.getDenominator() * rValue.getDenominator());
+	result.setNumerator((lValue.getNumerator() * rValue.getDenominator())
+		- (rValue.getNumerator() * lValue.getDenominator()));
+	result.reduce();
+	return result;
+}
 
 Rational operator*(const Rational &lValue, const Rational &rValue)
 {
